@@ -1,0 +1,25 @@
+name: senior_bus_app
+description: 어르신을 위한 쉬운 버스 안내 앱
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.5.1   # 상태 관리 / 의존성 주입
+  geolocator: ^12.0.0        # GPS 위치
+  url_launcher: ^6.3.0       # 전화 걸기 (tel:)
+  shared_preferences: ^2.2.3 # 자주 가는 곳, 설정 저장
+  http: ^1.2.1               # API 통신 (TAGO / ODsay / 카카오)
+  speech_to_text: ^6.6.2     # 음성 입력 (목적지 말하기)
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

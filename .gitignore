@@ -1,0 +1,17 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+pubspec.lock
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# 비밀 키 (API 키는 절대 커밋 금지)
+lib/core/constants/secrets.dart
+*.keystore
+key.properties
