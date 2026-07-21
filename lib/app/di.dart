@@ -36,8 +36,8 @@ const _kakaoKey = String.fromEnvironment('KAKAO_KEY');
 /// 실제 API 모드 여부 (두 키가 모두 있어야 실제 모드)
 const bool isRealApiMode = _tagoKey != '' && _odsayKey != '';
 
-final locationRepoProvider = Provider<LocationRepository>((ref) =>
-    isRealApiMode ? LocationRepositoryImpl() : MockLocationRepository());
+final locationRepoProvider =
+    Provider<LocationRepository>((ref) => LocationRepositoryImpl());
 
 final stationRepoProvider = Provider<StationRepository>((ref) =>
     isRealApiMode
