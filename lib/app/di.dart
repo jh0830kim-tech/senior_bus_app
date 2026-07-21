@@ -33,24 +33,24 @@ const _tagoKey = String.fromEnvironment('TAGO_KEY');
 const _odsayKey = String.fromEnvironment('ODSAY_KEY');
 const _kakaoKey = String.fromEnvironment('KAKAO_KEY');
 
-/// 실제 API 모드 여부 (두 키가 모두 있어야 실제 모드)
-const bool isRealApiMode = _tagoKey != '' && _odsayKey != '';
+/// 각 API 키가 있으면 해당 기능만 실제 모드로 동작한다.
+/// 키가 없는 기능은 Mock(가짜 데이터)으로 독립 동작.
 
 final locationRepoProvider = Provider<LocationRepository>((ref) =>
-    isRealApiMode ? LocationRepositoryImpl() : MockLocationRepository());
+    LocationRepositoryImpl());
 
 final stationRepoProvider = Provider<StationRepository>((ref) =>
-    isRealApiMode
+    _tagoKey != ''
         ? StationRepositoryImpl(BusApiClient(_tagoKey))
         : MockStationRepository());
 
 final routeRepoProvider = Provider<RouteRepository>((ref) =>
-    isRealApiMode
+    _odsayKey != ''
         ? RouteRepositoryImpl(RouteApiClient(_odsayKey))
         : MockRouteRepository());
 
 final favoriteRepoProvider = Provider<FavoriteRepository>((ref) =>
-    isRealApiMode ? FavoriteRepositoryImpl() : MockFavoriteRepository());
+    FavoriteRepositoryImpl());
 
 /// 장소 검색: 카카오 키가 있으면 실제, 없으면 Mock
 final placeRepoProvider = Provider<PlaceRepository>((ref) => _kakaoKey != ''
